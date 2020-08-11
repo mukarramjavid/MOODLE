@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MODDLEUpdateModelStoreContainer" CdmEntityContainer="MODDLEDbContext">
+    <EntitySetMapping Name="tbl_Class">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Class">
+        <MappingFragment StoreEntitySet="tbl_Class">
+          <ScalarProperty Name="class_id" ColumnName="class_id" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+          <ScalarProperty Name="class_code" ColumnName="class_code" />
+          <ScalarProperty Name="TeachUserId" ColumnName="TeachUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ClassParticipent">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_ClassParticipent">
+        <MappingFragment StoreEntitySet="tbl_ClassParticipent">
+          <ScalarProperty Name="Class_Part_id" ColumnName="Class_Part_id" />
+          <ScalarProperty Name="StdUserID" ColumnName="StdUserID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Parent">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Parent">
+        <MappingFragment StoreEntitySet="tbl_Parent">
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="ChildUserID" ColumnName="ChildUserID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Post">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Post">
+        <MappingFragment StoreEntitySet="tbl_Post">
+          <ScalarProperty Name="postId" ColumnName="postId" />
+          <ScalarProperty Name="postDesc" ColumnName="postDesc" />
+          <ScalarProperty Name="Tchr_User_Id" ColumnName="Tchr_User_Id" />
+          <ScalarProperty Name="classId" ColumnName="classId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Result">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Result">
+        <MappingFragment StoreEntitySet="tbl_Result">
+          <ScalarProperty Name="result_id" ColumnName="result_id" />
+          <ScalarProperty Name="std_grades" ColumnName="std_grades" />
+          <ScalarProperty Name="subjID" ColumnName="subjID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="TechrUserID" ColumnName="TechrUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Role">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Role">
+        <MappingFragment StoreEntitySet="tbl_Role">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Schedule">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Schedule">
+        <MappingFragment StoreEntitySet="tbl_Schedule">
+          <ScalarProperty Name="deppt" ColumnName="deppt" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="sheduleId" ColumnName="sheduleId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="room" ColumnName="room" />
+          <ScalarProperty Name="teacher" ColumnName="teacher" />
+          <ScalarProperty Name="session" ColumnName="session" />
+          <ScalarProperty Name="section" ColumnName="section" />
+          <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Student">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Student">
+        <MappingFragment StoreEntitySet="tbl_Student">
+          <ScalarProperty Name="std_rollNo" ColumnName="std_rollNo" />
+          <ScalarProperty Name="std_deppt" ColumnName="std_deppt" />
+          <ScalarProperty Name="std_degree" ColumnName="std_degree" />
+          <ScalarProperty Name="std_id" ColumnName="std_id" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Subject">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Subject">
+        <MappingFragment StoreEntitySet="tbl_Subject">
+          <ScalarProperty Name="subj_id" ColumnName="subj_id" />
+          <ScalarProperty Name="subj_name" ColumnName="subj_name" />
+          <ScalarProperty Name="subj_hrs" ColumnName="subj_hrs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Teacher">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Teacher">
+        <MappingFragment StoreEntitySet="tbl_Teacher">
+          <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+          <ScalarProperty Name="teacher_designation" ColumnName="teacher_designation" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_User">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_User">
+        <MappingFragment StoreEntitySet="tbl_User">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_pwd" ColumnName="user_pwd" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Comment">
+      <EntityTypeMapping TypeName="MODDLEUpdateModel.tbl_Comment">
+        <MappingFragment StoreEntitySet="tbl_Comment">
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="postID" ColumnName="postID" />
+          <ScalarProperty Name="comment_Time" ColumnName="comment_Time" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="comment_text" ColumnName="comment_text" />
+          <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,169 @@
+﻿@model AppModel.UserViewModel
+
+@{
+    ViewBag.Title = "GetById";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("GetById", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container" style="" id="LoginForm">
+        <h2>Edit User</h2>
+       <hr />
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model=>model.user_id)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.user_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                @Html.EditorFor(model => model.user_name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter UserName" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.user_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.user_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                @Html.EditorFor(model => model.user_email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Email" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.user_email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.user_pwd, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                @Html.EditorFor(model => model.user_pwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.user_pwd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tbl_Role.role_name, "Role ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-chevron-circle-down"></i></span>
+                                @Html.DropDownListFor(model => model.role_id, ViewBag.RoleListName as SelectList, "--Select Role--", htmlAttributes: new { @class = "form-control roleStatus" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.role_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="" style="display:none;" id="std_rol">
+                        <h3>Student Info</h3>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tbl_Student.std_rollNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                    @Html.EditorFor(model => model.tbl_Student.std_rollNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Roll Number" } })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tbl_Student.std_degree, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                    @Html.EditorFor(model => model.tbl_Student.std_degree, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Degree" } })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tbl_Student.std_deppt, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                    @Html.EditorFor(model => model.tbl_Student.std_deppt, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter deppt" } })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" id="teacher" style="display:none;">
+                        <h3>Teacher Info</h3>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tbl_Teacher.teacher_designation, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
+                                    @Html.EditorFor(model => model.tbl_Teacher.teacher_designation, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Designation" } })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" id="parent" style="display:none;">
+                        <h3>Parant Info</h3>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tbl_Parent.child_roll_no, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </span>
+                                    @Html.EditorFor(model => model.tbl_Parent.child_roll_no, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Designation" } })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-10 col-md-10 col-sm-offset-4 col-sm-10 col-xs-offset-4 col-xs-10">
+                            <input type="submit" value="Register" class="btn btn-primary" id="btn" />
+                        </div>
+                    </div>
+                    @if (TempData["IsExist"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsExist"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsSuccess"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-success">@TempData["IsSuccess"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsFail"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsFail"]</label>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+
+}
+

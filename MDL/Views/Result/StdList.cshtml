@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AppDB.Db.tbl_Result>
+
+@{
+    ViewBag.Title = "StdList";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="box-header">
+                    <h1 class="">List</h1>
+                    @Html.ActionLink("Create New","Upload_Result","Result", htmlAttributes: new { @style = "", @class = "btn btn-primary btn-sm" })
+                    <hr />
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped table-condensed table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayName("Name")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Roll No")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Subj Name")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Grade")
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tbl_User.user_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tbl_User.tbl_Student.FirstOrDefault().std_rollNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tbl_Subject.subj_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.std_grades)
+                                    </td>
+                                    <td>
+                                        <a href='@Url.Action("GetById","Result",new {id=item.result_id})'><i class="fas fa-pen-square fa-2x"></i></a>
+                                        <a href='@Url.Action("DeleteResult","Result",new {id=item.result_id})'><i class="fas fa-times-circle fa-2x text-danger" onclick="return Confirm()"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</div>

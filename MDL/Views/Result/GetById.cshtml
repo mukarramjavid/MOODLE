@@ -1,0 +1,99 @@
+﻿@model AppModel.ViewModels.ResultViewModel
+
+@{
+    ViewBag.Title = "Upload_Result";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+@using (Html.BeginForm("GetById","Result",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container" style="" id="LoginForm">
+        <h2>Upload Result</h2>
+        <h4>
+            <a href="~/Result/StdList/" class="btn btn-success btn-sm" style="font-weight:bold">Result List</a>
+        </h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model=>model.result_id)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tbl_User.student.std_rollNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                @Html.DropDownListFor(model => model.userID, ViewBag.AllRoll as SelectList, "Select Roll Number", new { @class = "form-control", @placeholder = "Enter Roll No" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.tbl_User.student.std_rollNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tbl_Subject.subj_name, "Subject", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                @Html.DropDownListFor(model => model.subjID, ViewBag.SubjectListName as SelectList, "--Select Subject", new { @class = "form-control", @placeholder = "Enter Subject" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.subjID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.std_grades, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-sort-alpha-asc"></i></span>
+                                @Html.EditorFor(model => model.std_grades, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Grade" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.std_grades, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-10 col-md-10 col-sm-offset-4 col-sm-10 col-xs-offset-4 col-xs-10">
+                            <input type="submit" value="Update" class="btn btn-primary" id="btn" />
+                        </div>
+                    </div>
+                    @if (TempData["IsExist"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsExist"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsSuccess"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-success">@TempData["IsSuccess"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsFail"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsFail"]</label>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+
+}

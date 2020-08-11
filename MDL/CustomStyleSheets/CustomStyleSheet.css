@@ -1,0 +1,28 @@
+﻿body {
+}
+#fh5co-services .box-services .to-animate-2,
+.social-media li a .ss{
+   color:#00558E;
+}
+.social-media li a .ss:hover{
+    transition:.4s;
+    color:#ffffff;
+}
+#fh5co-services .fh5co-services .call-to-action .btn-learn,
+.getting-started,
+#fh5co-home .text-wrap .text-inner .call-to-action #getStarted{
+     background-color:#00558E;
+     text-decoration: none !important;
+ }
+.getting-started .call-to-action a.sign-up{
+    color:#00558E;
+}
+#fh5co-about .section-heading .style{
+    color:#00558E;
+    font-weight:bolder;
+}
+#fh5co-about .style, #fh5co-services .style{
+    color:#00558E;
+    font-weight:bolder;
+     /*box-shadow: 5px 10px 8px 10px #888888;*/
+}

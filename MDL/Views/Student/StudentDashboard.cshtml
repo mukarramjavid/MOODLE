@@ -1,0 +1,87 @@
+﻿@model IEnumerable<AppDB.Db.tbl_Result>
+
+@{
+    ViewBag.Title = "StudentDashboard";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+@if (Session["N"] != null)
+{
+    <center><h1 style="font-family:Georgia;line-height:inherit;"> Welcome @Session["N"].ToString() </h1></center>
+}
+else
+{ <p></p>}
+<hr />
+<div class="row">
+    @* view result *@
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Student/View_Result/">
+            <div class="small-box bg-blue-active">
+                <div class="inner">
+                    <h3><i class="fa fa-id-card"></i></h3>
+
+                    <p>View Result</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-book"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    @* View Timetable *@
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Moddle/ScheduleBySession/">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><i class="fa fa-table"></i></h3>
+
+                    <p>View Time Table</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+
+    @* View Classes *@
+    @*<div class="col-md-3 col-xs-12">
+         small box 
+        <a href="#">
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3><i class="fa fa-list-alt"></i></h3>
+
+                    <p>View Classes</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-book"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>*@
+    @* Join Classes *@
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="~/Student/JoinClass">
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3><i class="fa fa-plus"></i></h3>
+
+                    <p>Join Classes</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-clipboard"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+

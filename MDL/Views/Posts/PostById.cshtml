@@ -1,0 +1,93 @@
+﻿@model AppModel.ViewModels.PostViewModel
+
+@{
+    ViewBag.Title = "PostById";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+<style>
+    .panel-title {
+        color: #fff;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+
+    .user_name {
+        text-transform: capitalize;
+    }
+    .cmnts{
+        text-decoration:underline;
+        font-weight: bold;
+    }
+</style>
+<h2 class="title">@Html.DisplayFor(model => model.subject_name)</h2>
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><b class="user_name">@Html.DisplayFor(model=>model.teacher_name)</b> update a post.</div>
+                <div class="panel-body">
+                    @Html.DisplayFor(model => model.postDesc)
+                </div>
+                <div class="panel-footer" >
+                    <small class="cmnts">Comments:</small>
+                    <div id="all-comments"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="container" id="LoginForm">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    @using (Html.BeginForm("PostById", "Posts", FormMethod.Post))
+            {
+                        @Html.HiddenFor(model => model.classId, new { @id = "classid" })
+                        @Html.HiddenFor(model => model.postId, new { @id = "postid" })
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.text, htmlAttributes: new { @class = "form-control" ,@placeholder="Enter you comment here . . ." } )
+                                @Html.ValidationMessageFor(model => model.text, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-10 col-md-10 col-sm-offset-4 col-sm-10 col-xs-offset-4 col-xs-10">
+                                <input type="submit" value="Post" class="btn btn-primary" id="btn" />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $(document).ready(function () {
+        var postid= $("#postid").val()
+        var classid= $("#classid").val()
+        //console.log(postid + classid)
+        //return
+        $.ajax({
+            type: "GET",
+            url: "/Posts/GetAllComments",
+            success: function (data) {
+                $("#all-comments").html(data)
+            }
+        })
+    })
+</script>

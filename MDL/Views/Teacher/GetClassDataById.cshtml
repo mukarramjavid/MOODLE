@@ -1,0 +1,36 @@
+﻿@model AppModel.ViewModels.ClassViewModel
+
+@{
+    ViewBag.Title = "GetClassDataById";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+<div class="container" style="">
+    <div class="row">
+        <div class="col-md-4">
+            <h2 class="title">@Html.DisplayFor(model => model.class_name)</h2>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">@Html.LabelFor(model => model.class_code):&nbsp;@Html.DisplayFor(model => model.class_code)</h2>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8"></div>
+    </div>
+</div>
+<hr />  
+ <a href='@Url.Action("CreatePost","Teacher", new {id=Model.class_id })' class="btn btn-primary btn-lg" >Add Announncment</a>
+
+<style>
+    
+    .panel-title {
+        color: #fff;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+    .title {
+        font-weight: bold;
+    }
+</style>

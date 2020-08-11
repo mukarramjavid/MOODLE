@@ -1,0 +1,198 @@
+﻿@model AppModel.UserViewModel
+
+@if (Model.role_id == 1)
+{
+    {
+        ViewBag.Title = "ProfileData";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+else
+{
+    {
+        ViewBag.Title = "ProfileData";
+        Layout = "~/Views/Shared/_CommonLayout.cshtml";
+    }
+}
+@using (Html.BeginForm("EditDataById", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container" style="" id="LoginForm">
+        <h2>Your Profile</h2>
+        <hr />
+        <div class="row">
+          
+            @* Form *@
+            <div class="col-md-6">
+
+                <div class="form-horizontal">
+                    @* For userID *@
+                    @Html.HiddenFor(model=>model.user_id)
+                    @* for UserImage *@
+                    @Html.HiddenFor(model=>model.ImagePath, htmlAttributes: new { @class = "ImagePath" })
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.user_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                @Html.EditorFor(model => model.user_name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter UserName", @readonly = "readonly" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.user_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.user_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                @Html.EditorFor(model => model.user_email, new { htmlAttributes = new { @class = "form-control disable", @placeholder = "Enter Email", @readonly="readonly" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.user_email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.user_pwd, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                @Html.EditorFor(model => model.user_pwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password" } })
+                                <span class="input-group-addon" toggle="toggle-password"><i class="fa fa-eye-slash toggle-password"></i></span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.user_pwd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model=>model.role_id)
+                    <div class="form-group">
+                        <div class="col-md-offset-10 col-md-10 col-sm-offset-4 col-sm-10 col-xs-offset-4 col-xs-10">
+                            <input type="submit" value="Update" class="btn btn-success" id="btn" />
+                        </div>
+                    </div>
+                    @if (TempData["IsExist"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsExist"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsSuccess"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-success">@TempData["IsSuccess"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsFail"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsFail"]</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <b>Note: </b>
+                        <ul>
+                            <li>Your Profile Name & Display Picture will be updated by next Login.<img src="~/images/animated-info-sign-image-0007.gif" style="width:25px;height:25px;" alt="Alternate Text" /></li>
+                            <li>Your Email &amp; UserName are unchangeable. </li>
+                            <li>Only Password is changeable. </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @* Image *@
+            <div class="col-md-4">
+                <div class="user_profile_img">
+
+                    <input type="file" class="hidden" id="BrowseImage" accept="image/*" name="UserImageFile" />
+                    <img src='@Url.Content(Model.ImagePath)' class="img-responsive" id="UserImage" />
+                    <div class="upload_photo">
+                        <img src="~/images/search-512.png" id="searchImg" class="img-responsive" />
+                    </div>
+                    <p class="img-desc text-center">Image allowed only 178 x 156 </p>
+                    <div class="remove_photo">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                </div>
+            </div>
+            @* Empty space *@
+            <div class="col-md-2"></div>
+        </div>
+        
+    </div>
+
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $(document).ready(function () {
+
+        //Upload & Browse picture
+        $("#UserImage,.upload_photo").click(function () {
+            $("#BrowseImage").trigger('click');
+            //alert('click')
+        });
+        //Select & upload Image
+        $("#BrowseImage").change(function () {
+
+            var File = this.files;
+
+            if (File && File[0]) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(File[0]);
+
+                fileReader.onload = function (img) {
+                    //Load img and control dimensions
+                    var image = new Image();
+                    image.src = img.target.result;
+                    image.onload = function () {
+
+                        var width = this.width;
+                        var height = this.height;
+                        var type = File[0].type;
+
+                        if ((width == "178" && height == "156") && (type == "image/jpg" || type == "image/png" || type == "image/jpeg")) {
+                            $("#UserImage").attr('src', img.target.result);
+                            $(".img-desc").css("color", "black");
+                        }
+                        else {
+                            alert("Only specfied dimensions are allowed. 178 x 156");
+                            $(".img-desc").css("color", "red");
+                        }
+                        //alert("width: " + width + "height: " + height); 
+                    }
+
+                    //$("#UserImage").attr('src', img.target.result);
+                }
+            }
+        });
+
+        $(".remove_photo").click(function () {
+            $("#UserImage").attr('src', "/images/no_image_available_male.png");
+            $(".ImagePath").val("/images/no_image_available_male.png");
+        });
+        //Eye Button
+        $(".toggle-password").click(function () {
+            var id = $(this).parent().parent().find('input').attr('id')
+            console.log(id)
+            if ($('#' + id).attr('type') == "password") {
+                $('#' + id).attr('type', 'text')
+            } else {
+                $('#' + id).attr('type', 'password')
+            }
+            $(this).toggleClass("fa-eye fa-eye-slash")
+        });
+
+
+    });
+
+
+
+</script>

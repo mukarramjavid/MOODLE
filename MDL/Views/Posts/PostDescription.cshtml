@@ -1,0 +1,53 @@
+﻿@model  IEnumerable<AppModel.ViewModels.PostViewModel>
+
+@{
+    ViewBag.Title = "PostDescription";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+    var arr = Model;
+}
+<style>
+    .panel-title {
+        color: #fff;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+
+    .user_name {
+        text-transform: capitalize;
+    }
+</style>
+<h2 class="title">@Html.DisplayFor(model => model.FirstOrDefault().subject_name)</h2>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        @* Post description panel *@
+        <div class="col-md-8">
+
+            @foreach (var item in Model)
+            {
+                using (Html.BeginForm())
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><b class="user_name">@Html.DisplayFor(modelItem => item.teacher_name) </b> update a post.</div>
+                        <div class="panel-body">
+                            @Html.DisplayFor(modelItem => item.postDesc)
+                        </div>
+                        <div class="panel-footer">
+                            <a href="@Url.Action("PostById", "Posts", new { id=item.postId })">
+                                Comment Here <i class="fa fa-hand-o-down"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                }
+
+            }
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

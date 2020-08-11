@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Session["N"] != null)
+{
+    <center><h1 style="font-family:Georgia;line-height:inherit;"> Welcome @Session["N"].ToString() </h1></center>
+}
+else
+{ <p></p>}
+<hr />
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Admin/Register/">
+            <div class="small-box bg-blue-active">
+                <div class="inner">
+                    <h3><i class="fa fa-plus"></i></h3>
+
+                    <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Admin/List/">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><i class="fa fa-list"></i></h3>
+
+                    <p>Users List</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-list"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    <!-- ./col -->
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Admin/InsertSchedule/">
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3><i class="fa fa-table"></i></h3>
+
+                    <p>Upload Time Table</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    <!-- ./col -->
+
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Admin/InsertSubject/">
+            <div class="small-box bg-olive-active">
+                <div class="inner">
+                    <h3><i class="fa fa-plus"></i></h3>
+
+                    <p>Insert Subjects</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-book-outline"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- Small boxes (Stat box) -->
+<div class="row">
+
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Admin/SubjectList/">
+            <div class="small-box bg-teal-active">
+                <div class="inner">
+                    <h3><i class="fa fa-list"></i></h3>
+
+                    <p>Subjects List</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-list"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    <!-- ./col -->
+</div>

@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MODDLEUpdateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Class">
+    <Key>
+      <PropertyRef Name="class_id" />
+    </Key>
+    <Property Name="class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="class_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="class_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeachUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_ClassParticipent">
+    <Key>
+      <PropertyRef Name="Class_Part_id" />
+    </Key>
+    <Property Name="Class_Part_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StdUserID" Type="int" />
+    <Property Name="ClassID" Type="int" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Comment">
+    <Key>
+      <PropertyRef Name="comment_id" />
+    </Key>
+    <Property Name="comment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comment_text" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="comment_Time" Type="nvarchar" MaxLength="50" />
+    <Property Name="postID" Type="int" />
+    <Property Name="classID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Parent">
+    <Key>
+      <PropertyRef Name="parent_id" />
+    </Key>
+    <Property Name="parent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChildUserID" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Post">
+    <Key>
+      <PropertyRef Name="postId" />
+    </Key>
+    <Property Name="postId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="postDesc" Type="nvarchar(max)" />
+    <Property Name="Tchr_User_Id" Type="int" />
+    <Property Name="classId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Result">
+    <Key>
+      <PropertyRef Name="result_id" />
+    </Key>
+    <Property Name="result_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="std_grades" Type="nvarchar" MaxLength="50" />
+    <Property Name="subjID" Type="int" />
+    <Property Name="userID" Type="int" />
+    <Property Name="TechrUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Schedule">
+    <Key>
+      <PropertyRef Name="sheduleId" />
+    </Key>
+    <Property Name="sheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="nvarchar" MaxLength="50" />
+    <Property Name="room" Type="nvarchar" MaxLength="50" />
+    <Property Name="teacher" Type="nvarchar" MaxLength="50" />
+    <Property Name="session" Type="nvarchar" MaxLength="50" />
+    <Property Name="section" Type="char" MaxLength="10" />
+    <Property Name="subjectName" Type="nvarchar" MaxLength="50" />
+    <Property Name="time" Type="nvarchar" MaxLength="50" />
+    <Property Name="deppt" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Student">
+    <Key>
+      <PropertyRef Name="std_id" />
+    </Key>
+    <Property Name="std_rollNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="std_deppt" Type="nvarchar" MaxLength="50" />
+    <Property Name="std_degree" Type="nvarchar" MaxLength="50" />
+    <Property Name="std_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Subject">
+    <Key>
+      <PropertyRef Name="subj_id" />
+    </Key>
+    <Property Name="subj_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subj_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="subj_hrs" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Teacher">
+    <Key>
+      <PropertyRef Name="teacher_id" />
+    </Key>
+    <Property Name="teacher_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="teacher_designation" Type="nvarchar" MaxLength="50" />
+    <Property Name="userID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="user_email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="user_pwd" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_tbl_Class_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Class" Type="Self.tbl_Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Class">
+        <PropertyRef Name="TeachUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_ClassParticipent_tbl_Class">
+    <End Role="tbl_Class" Type="Self.tbl_Class" Multiplicity="0..1" />
+    <End Role="tbl_ClassParticipent" Type="Self.tbl_ClassParticipent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Class">
+        <PropertyRef Name="class_id" />
+      </Principal>
+      <Dependent Role="tbl_ClassParticipent">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_ClassParticipent_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_ClassParticipent" Type="Self.tbl_ClassParticipent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_ClassParticipent">
+        <PropertyRef Name="StdUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Comment_tbl_Post">
+    <End Role="tbl_Post" Type="Self.tbl_Post" Multiplicity="0..1" />
+    <End Role="tbl_Comment" Type="Self.tbl_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Post">
+        <PropertyRef Name="postId" />
+      </Principal>
+      <Dependent Role="tbl_Comment">
+        <PropertyRef Name="postID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Comment_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Comment" Type="Self.tbl_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Comment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Parent_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Parent" Type="Self.tbl_Parent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Parent">
+        <PropertyRef Name="ChildUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Parent_tbl_User1">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Parent" Type="Self.tbl_Parent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Parent">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Post_tbl_Class">
+    <End Role="tbl_Class" Type="Self.tbl_Class" Multiplicity="0..1" />
+    <End Role="tbl_Post" Type="Self.tbl_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Class">
+        <PropertyRef Name="class_id" />
+      </Principal>
+      <Dependent Role="tbl_Post">
+        <PropertyRef Name="classId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Post_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Post" Type="Self.tbl_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Post">
+        <PropertyRef Name="Tchr_User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Result_tbl_Subject">
+    <End Role="tbl_Subject" Type="Self.tbl_Subject" Multiplicity="0..1" />
+    <End Role="tbl_Result" Type="Self.tbl_Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Subject">
+        <PropertyRef Name="subj_id" />
+      </Principal>
+      <Dependent Role="tbl_Result">
+        <PropertyRef Name="subjID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Result_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Result" Type="Self.tbl_Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Result">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Student_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Student" Type="Self.tbl_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Student">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Teacher_tbl_User">
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+    <End Role="tbl_Teacher" Type="Self.tbl_Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="tbl_Teacher">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_User_tbl_Role">
+    <End Role="tbl_Role" Type="Self.tbl_Role" Multiplicity="1" />
+    <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Role">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="tbl_User">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MODDLEUpdateModelStoreContainer">
+    <EntitySet Name="tbl_Class" EntityType="Self.tbl_Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ClassParticipent" EntityType="Self.tbl_ClassParticipent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Comment" EntityType="Self.tbl_Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Parent" EntityType="Self.tbl_Parent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Post" EntityType="Self.tbl_Post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Result" EntityType="Self.tbl_Result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Schedule" EntityType="Self.tbl_Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Student" EntityType="Self.tbl_Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Subject" EntityType="Self.tbl_Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Teacher" EntityType="Self.tbl_Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_Class_tbl_User" Association="Self.FK_tbl_Class_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Class" EntitySet="tbl_Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_ClassParticipent_tbl_Class" Association="Self.FK_tbl_ClassParticipent_tbl_Class">
+      <End Role="tbl_Class" EntitySet="tbl_Class" />
+      <End Role="tbl_ClassParticipent" EntitySet="tbl_ClassParticipent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_ClassParticipent_tbl_User" Association="Self.FK_tbl_ClassParticipent_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_ClassParticipent" EntitySet="tbl_ClassParticipent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Comment_tbl_Post" Association="Self.FK_tbl_Comment_tbl_Post">
+      <End Role="tbl_Post" EntitySet="tbl_Post" />
+      <End Role="tbl_Comment" EntitySet="tbl_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Comment_tbl_User" Association="Self.FK_tbl_Comment_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Comment" EntitySet="tbl_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Parent_tbl_User" Association="Self.FK_tbl_Parent_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Parent" EntitySet="tbl_Parent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Parent_tbl_User1" Association="Self.FK_tbl_Parent_tbl_User1">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Parent" EntitySet="tbl_Parent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Post_tbl_Class" Association="Self.FK_tbl_Post_tbl_Class">
+      <End Role="tbl_Class" EntitySet="tbl_Class" />
+      <End Role="tbl_Post" EntitySet="tbl_Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Post_tbl_User" Association="Self.FK_tbl_Post_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Post" EntitySet="tbl_Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Result_tbl_Subject" Association="Self.FK_tbl_Result_tbl_Subject">
+      <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+      <End Role="tbl_Result" EntitySet="tbl_Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Result_tbl_User" Association="Self.FK_tbl_Result_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Result" EntitySet="tbl_Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Student_tbl_User" Association="Self.FK_tbl_Student_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Student" EntitySet="tbl_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Teacher_tbl_User" Association="Self.FK_tbl_Teacher_tbl_User">
+      <End Role="tbl_User" EntitySet="tbl_User" />
+      <End Role="tbl_Teacher" EntitySet="tbl_Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_User_tbl_Role" Association="Self.FK_tbl_User_tbl_Role">
+      <End Role="tbl_Role" EntitySet="tbl_Role" />
+      <End Role="tbl_User" EntitySet="tbl_User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

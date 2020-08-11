@@ -1,0 +1,22 @@
+﻿@model IEnumerable<AppDB.Db.tbl_Comment>
+<style>
+    .name{
+        text-transform:capitalize;
+    }
+</style>
+<div class="">
+    @if (Model.Count() == 0)
+    {
+        <br />
+        <label class="label label-danger">No Comments available...</label>
+    }
+    else
+    {
+        foreach(var item in Model)
+        {
+            <strong class="name">@item.tbl_User.user_name:&nbsp;</strong> @item.comment_text
+            <hr />
+        }
+    }
+</div>
+

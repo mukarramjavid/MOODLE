@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1cb825228e7144e285754120dcdb3588" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Class" Width="1.5" PointX="10.125" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_ClassParticipent" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Parent" Width="1.5" PointX="2.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Post" Width="1.5" PointX="8.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Result" Width="1.5" PointX="3.375" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Role" Width="1.5" PointX="2.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Schedule" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Student" Width="1.5" PointX="6" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Subject" Width="1.5" PointX="0.625" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Teacher" Width="1.5" PointX="0.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_User" Width="1.5" PointX="5.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Class_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_ClassParticipent_tbl_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Post_tbl_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_ClassParticipent_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Parent_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Parent_tbl_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Post_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Result_tbl_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Result_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_User_tbl_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Student_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Teacher_tbl_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MODDLEUpdateModel.tbl_Comment" Width="1.5" PointX="8" PointY="0.5" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Comment_tbl_Post" />
+        <AssociationConnector Association="MODDLEUpdateModel.FK_tbl_Comment_tbl_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

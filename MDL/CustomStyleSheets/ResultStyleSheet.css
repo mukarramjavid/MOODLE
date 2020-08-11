@@ -1,0 +1,36 @@
+﻿body {
+}
+#LoginForm {
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom:65px;
+    /*box-shadow: 5px 5px 8px 2px #777777;*/
+}
+#LoginForm h3{
+    color:black;
+}
+
+    #LoginForm .form-horizontal .input-group-addon,
+    #LoginForm .form-horizontal .form-control {
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+
+    }
+    #LoginForm .form-horizontal .input-group-addon,
+    #LoginForm .form-horizontal .form-control:hover{
+         border-bottom: 1px solid #00558E;
+    }
+    #LoginForm .form-horizontal input[type="submit"]{
+        background-color:#000000;
+        border: none;
+        outline: none;
+       border-radius: 36px 36px 36px 36px;
+       cursor: pointer;
+    }
+     #LoginForm .form-horizontal input[type="submit"]:hover{
+         background-color:#00558E;
+         transition:0.7s;
+     }

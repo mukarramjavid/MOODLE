@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77EED62C-E45B-4116-862F-925646330D40}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppDB</RootNamespace>
+    <AssemblyName>AppDB</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbOperations\ClassParticipentRepository.cs" />
+    <Compile Include="DbOperations\ClassRepository.cs" />
+    <Compile Include="DbOperations\CommentRepository.cs" />
+    <Compile Include="DbOperations\PostRepository.cs" />
+    <Compile Include="DbOperations\ResultRepository.cs" />
+    <Compile Include="DbOperations\ScheduleRepository.cs" />
+    <Compile Include="DbOperations\SubjectRepository.cs" />
+    <Compile Include="DbOperations\UserRep.cs" />
+    <Compile Include="Db\MDL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\MDL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\MDL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Class.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_ClassParticipent.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Comment.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Parent.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Post.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Result.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Role.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Schedule.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Student.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Subject.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_Teacher.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbl_User.cs">
+      <DependentUpon>MDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Db\MDL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MDL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Db\MDL.edmx.diagram">
+      <DependentUpon>MDL.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppModel\AppModel.csproj">
+      <Project>{a8193719-94aa-4556-b1d5-fba9a793cd1c}</Project>
+      <Name>AppModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Db\MDL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MDL.edmx</DependentUpon>
+      <LastGenOutput>MDL.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Db\MDL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MDL.edmx</DependentUpon>
+      <LastGenOutput>MDL.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

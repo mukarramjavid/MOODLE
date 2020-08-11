@@ -1,0 +1,160 @@
+﻿@model AppModel.ViewModels.ScheduleViewModel
+
+@{
+    ViewBag.Title = "GetScheduleById";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container" style="" id="LoginForm">
+        <h2 style="font-weight:bold">Edit Schedule</h2>
+        <h4>
+            @Html.ActionLink("View Schedule", "ScheduleList", "Admin", htmlAttributes: new { @style = "font-weight: bold", @class = "btn btn-primary btn-sm" })
+            @*@Html.ActionLink("Schedule by Session", "ScheduleBySession", "Moddle", htmlAttributes: new { @style = "font-weight: bold", @class = "btn btn-success btn-sm" })*@
+        </h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                <div class="form-horizontal">
+                    @Html.HiddenFor(model=>model.sheduleId)
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.subjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                @Html.EditorFor(model => model.subjectName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Subject Name" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.subjectName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.teacher, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                @Html.EditorFor(model => model.teacher, new { htmlAttributes = new { @class = "form-control", @placeholder = "Teacher Name" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.teacher, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.deppt, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                @Html.EditorFor(model => model.deppt, new { htmlAttributes = new { @class = "form-control", @placeholder = "Deppt Name" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.deppt, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.session, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-reddit-square"></i></span>
+                                @Html.EditorFor(model => model.session, new { htmlAttributes = new { @class = "form-control", @placeholder = "Session" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.session, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.section, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                @Html.EditorFor(model => model.section, new { htmlAttributes = new { @class = "form-control", @placeholder = "Section" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.section, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.room, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-adjust"></i></span>
+                                @Html.EditorFor(model => model.room, new { htmlAttributes = new { @class = "form-control", @placeholder = "Room No." } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.room, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "form-control", @placeholder = "Date" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.time, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                @Html.EditorFor(model => model.time, new { htmlAttributes = new { @class = "form-control timepicker", @placeholder = "Time" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.time, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-10 col-md-10 col-sm-offset-4 col-sm-10 col-xs-offset-4 col-xs-10">
+                            <input type="submit" value="Insert" class="btn btn-primary" id="btn" />
+                        </div>
+                    </div>
+                    @if (TempData["IsExist"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsExist"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsSuccess"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-success">@TempData["IsSuccess"]</label>
+                            </div>
+                        </div>
+                    }
+                    @if (TempData["IsFail"] != null)
+                    {
+                        <div class="">
+                            <div class="col-md-offset-5 col-md-10 ">
+                                <label class="label label-danger">@TempData["IsFail"]</label>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+
+}

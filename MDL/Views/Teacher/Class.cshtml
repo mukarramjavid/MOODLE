@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AppDB.Db.tbl_Class>
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+<h2 class="title">Your Classes.</h2>
+<hr />
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <a href='@Url.Action("CreatePost","Posts",new {id=item.class_id })'><h2 class="panel-title">@item.class_name</h2></a>
+                        </div>
+                        <div class="panel-body">
+                            @item.class_code 
+                            <a class="pull-right" href="@Url.Action("PostDescription", "Posts", new { id=item.class_id })">
+                                Click Here to go posts<i class="fa fa-hand-o-down"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            }
+
+        </div>
+    </div>
+<style>
+    .panel-title {
+        color: #fff;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+</style>

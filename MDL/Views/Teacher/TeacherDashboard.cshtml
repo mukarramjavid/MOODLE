@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "TeacherDashboard";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+@if (Session["N"] != null)
+{
+    <center><h1 style="font-family:Georgia;line-height:inherit;"> Welcome @Session["N"].ToString().ToUpper() </h1></center>
+}
+else
+{ <p></p>}
+<hr />
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Result/Upload_Result/">
+            <div class="small-box bg-blue-active">
+                <div class="inner">
+                    <h3><i class="fa fa-upload"></i></h3>
+
+                    <p>Upload Result</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-clock"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Result/StdList/">
+            <div class="small-box bg-teal-active">
+                <div class="inner">
+                    <h3><i class="fa fa-list"></i></h3>
+
+                    <p>Result List</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-list"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    <!-- ./col -->
+
+    @* View Timetable *@
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Moddle/ScheduleBySession/">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><i class="fa fa-table"></i></h3>
+
+                    <p>View Time Table</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+
+    @* Create Class*@
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="~/Teacher/CreateClass/">
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3><i class="fa fa-plus"></i></h3>
+
+                    <p>Create Class</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+</div>
+
+@* sec row *@
+<div class="row">
+    @* List Class*@
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="~/Teacher/ClassList/">
+            <div class="small-box bg-red-active">
+                <div class="inner">
+                    <h3><i class="fa fa-list-ol"></i></h3>
+
+                    <p>Classes List</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+@if (Session["N"] != null)
+{
+    <center><h1 style="font-family:Georgia;line-height:;"> Welcome Mr.  @Session["N"].ToString() </h1></center><hr />
+    if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("2"))
+        {
+            <h1 style="font-family:Georgia;line-height:"> Student Panel. </h1>
+        }
+        if (User.IsInRole("4"))
+        {
+            <h1 style="font-family:Georgia;line-height:"> Parent Panel. </h1>
+        }
+        
+    }
+}
+else
+{ <p></p>}
+

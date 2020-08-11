@@ -1,0 +1,112 @@
+﻿@model IEnumerable<AppDB.Db.tbl_ClassParticipent>
+
+@{
+    ViewBag.Title = "JoinClass";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+<style>
+    .panel-primary:hover{
+        box-shadow: 5px 5px 10px 5px #888888;
+        cursor:pointer;
+    }
+    .panel-title {
+        color: #fff;
+        font-weight:bold;
+        font-size: 2rem;
+        font-family:Calibri;
+        height:50px;
+    }
+    .title {
+        font-weight: bold;
+        font-size: 3rem;
+    }
+    .panel-body{
+        height:100px;
+    }
+    .panel-footer{
+        /*height:40px;*/
+        text-align:center;
+        font-weight:bolder; 
+        font-size: 2rem; 
+    }
+</style>
+@* Class Joining Screen  *@
+<div class="row">
+    <div class="col-md-4 title">
+        @*<h2 class="title">Your Classes</h2>*@
+        Your Classes
+    </div>
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-primary btn-block btn-lg " data-toggle="modal" data-target="#myModal">Join</button>
+    </div>
+</div>
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container" id="LoginForm">
+        <div class="form-horizontal">
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Paste Class Code Here.</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input type="text" name="code" class="form-control" placeholder="Enter it here." />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            @*<a href='@Url.Action("CreatePost","Teacher", new {id=Model.class_id })' class="btn btn-primary btn-lg">Join</a>*@
+                                            <input type="submit" value="Join" class="btn btn-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (TempData["Error"] != null)
+                                {
+                                    <div class="label label-danger">@TempData["Error"].ToString()</div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+            <div class="row">
+                @* Classes List for Student *@
+                <div class="col-md-12">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <a href='@Url.Action("PostDescription","Posts",new {id=item.ClassID})'><h2 class="panel-title">@item.ClassName</h2></a>
+                                    </div>
+                                    <div class="panel-body">
+                                       
+                                    </div>
+                                    <div class="panel-footer">
+                                        @DateTime.Now
+                                    </div>
+                                </div>
+                            </div>
+                                
+                        }
+                    </div>
+                </div>
+
+                @*<div class="col-md-2"></div>*@
+            </div>
+        </div>
+    </div>
+}

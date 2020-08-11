@@ -1,0 +1,81 @@
+﻿@model AppModel.UserViewModel
+@if (Model.role_id == 1)
+{
+    {
+        ViewBag.Title = "ProfileData";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}else
+{
+    {
+        ViewBag.Title = "ProfileData";
+        Layout = "~/Views/Shared/_CommonLayout.cshtml";
+    }
+}
+@*@{
+    ViewBag.Title = "ProfileData";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}*@
+<head>
+    <style>
+        .CustStyle {
+            font-weight: bolder;
+            font-size: x-large;
+            /*text-align:left;*/
+        }
+        .fas:hover{
+            color:#fff;
+            font-size:larger;
+            transition:ease-out 0.3s;
+        }
+    </style>
+</head>
+<div>
+    @*<h4>User View Model</h4>
+        <hr />*@
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title CustStyle">Profile details <a href='@Url.Action("EditDataById","Manage",new {id=Model.user_id})'><i class="fas fa-pencil-alt "></i></a></h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    @* For details *@
+                    <div class="col-md-8">
+                        <div class="CustStyle">
+                            @Html.DisplayNameFor(model => model.user_name):
+                            @Html.DisplayFor(model => model.user_name)
+                        </div>
+                        <div class="CustStyle">
+                            @Html.DisplayNameFor(model => model.user_email):
+                            @Html.DisplayFor(model => model.user_email)
+                        </div>
+                        <div class="CustStyle">
+                            @Html.DisplayNameFor(model => model.user_pwd):
+                            @Html.DisplayFor(model => model.user_pwd)
+                        </div>
+                    </div>
+                    @* For image *@
+                    <div class="col-md-4">
+                        <img src="@Url.Content(Model.ImagePath)" alt="Alternate Text" class="img-responsive" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="CustStyle">
+                Note:
+            </div>
+            <div>
+                <ul>
+                    <li>If you want to Edit your Profile, you click on the "Pencil icon" on top.</li>
+                    <li>You will be redirect to the profile page.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

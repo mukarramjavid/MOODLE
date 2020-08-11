@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AppDB.Db.tbl_Schedule>
+
+@{
+    ViewBag.Title = "ViewSchdule";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="box-header">
+                    <h1 style="font-weight:bold">Time Table</h1>
+                    @*@Html.ActionLink("Create New", "Register", "Admin", htmlAttributes: new { @style = "", @class = "btn btn-primary btn-sm" })*@
+                    <hr />
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped table-condensed table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayName("Teacher")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Subject")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Room")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Date")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Time")
+                                </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.teacher)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.subjectName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.room)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.time)
+                                    </td>
+                                    @*<td>
+                                        <a href='@Url.Action("GetById","Admin",new {id=item.user_id})'><i class="fas fa-pen-square fa-2x"></i></a>
+                                        <a href='@Url.Action("Delete","Admin",new {Delid=item.user_id})'><i class="fas fa-times-circle fa-2x text-danger" onclick="return Confirm()"></i></a>
+                                    </td>*@
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</div>

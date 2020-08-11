@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AppDB.Db.tbl_User>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="box-header">
+                    <h1 class="">List</h1>
+                    @Html.ActionLink("Create New", "Register", "Admin", htmlAttributes: new { @style = "",@class="btn btn-primary btn-sm" })
+                    <hr />
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped table-condensed table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayName("UserName")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Email")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Password")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Role")
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.user_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.user_email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.user_pwd)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tbl_Role.role_name)
+                                    </td>
+                                    <td>
+                                        <a href='@Url.Action("GetById","Admin",new {id=item.user_id})'><i class="fas fa-pen-square fa-2x"></i></a>
+                                        <a href='@Url.Action("Delete","Admin",new {Delid=item.user_id})'><i class="fas fa-times-circle fa-2x text-danger" onclick="return Confirm()"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</div>

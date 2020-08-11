@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "ParentDashboard";
+    Layout = "~/Views/Shared/_CommonLayout.cshtml";
+}
+
+
+@if (Session["N"] != null)
+{
+    <center><h1 style="font-family:Georgia;line-height:inherit;"> Welcome @Session["N"].ToString() </h1></center>
+}
+else
+{ <p></p>}
+<hr />
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Parent/View_Result/">
+            <div class="small-box bg-blue-active">
+                <div class="inner">
+                    <h3><i class="fa fa-table"></i></h3>
+
+                    <p>View Result</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-clock"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    @* View Timetable *@
+    <div class="col-md-3 col-xs-12">
+        <!-- small box -->
+        <a href="/Moddle/ScheduleBySession/">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><i class="fa fa-table"></i></h3>
+
+                    <p>View Time Table</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <div class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+        </a>
+    </div>
+    <!-- ./col -->
+</div>
